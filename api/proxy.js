@@ -1,6 +1,16 @@
 export default async function handler(req, res) {
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.status(204).end();
+    return;
+  }
+
   const apiKey = process.env.CSFLOAT_API_KEY;
-  const url = `https://csfloat.com/api/v1/listings?paint_index=44&min_float=0.01&max_float=0.38&limit=50`;
+  const { searchParams } = new URL(req.url, `http://${req.headers.host}`);
+  const query = searchParams.toString();
+  const url = `https://csfloat.com/api/v1/listings${query ? `?${query}` : ''}`;
 
   try {
     const response = await fetch(url, {
@@ -17,6 +27,7 @@ export default async function handler(req, res) {
 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', '*');
     res.status(200).json(data);
   } catch (error) {
     console.error('Proxy error:', error);
