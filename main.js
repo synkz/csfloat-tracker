@@ -26,7 +26,7 @@ function getTier(seed) {
 }
 
 async function fetchListings() {
-  const res = await fetch(`${API_URL}?paint_index=44&min_float=0.01&max_float=0.38&limit=50`, {
+  const res = await fetch('https://csfloat-tracker.vercel.app/api/proxy', {
     headers: { 'Authorization': API_KEY }
   });
   if (!res.ok) throw new Error(`HTTP error ${res.status}`);

@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const apiKey = process.env.CSFLOAT_API_KEY;
-  const url = 'https://csfloat.com/api/v1/listings?paint_index=44&min_float=0.01&max_float=0.38&limit=50';
+  const url = `https://csfloat.com/api/v1/listings?paint_index=44&min_float=0.01&max_float=0.38&limit=50`;
 
   try {
     const response = await fetch(url, {
