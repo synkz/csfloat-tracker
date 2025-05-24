@@ -1,5 +1,5 @@
 const API_KEY = 'UhFh6M55gJrvqjgZqUyk-3iETD77Bnwx';
-const API_URL = 'https://corsproxy.io/?https://csfloat.com/api/v1/listings';
+const API_URL = 'https://csfloat-tracker.vercel.app/api/proxy';
 
 const TIER_1 = [661, 151, 955, 321, 387, 670, 179];
 const TIER_2 = [592, 4, 905, 13, 168, 429];
